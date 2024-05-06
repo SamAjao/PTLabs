@@ -100,19 +100,21 @@ public class Week03ArraysAndMethodsLab {
 			sumOfLetters += groupMember.length();
 		}
 		System.out.println("There are " + sumOfLetters + " letters in the array.");
-
 		
-
+		
 		//
 		// Methods:
 		//
 		
 		// 13. Write and test a method that takes a String name and prints out a greeting. 
 		//			This method returns nothing.
+		printGreeting("Sally");
 		
 		
 		// 14. Write and test a method that takes a String name and  
 		//			returns a greeting.  Do not print in the method.
+		String greeting = returnGreeting("Bob");
+		System.out.println(greeting);
 
 		
 		// Compare method 13 and method 14:  
@@ -123,63 +125,201 @@ public class Week03ArraysAndMethodsLab {
 		
 		// 15. Write and test a method that takes a String and an int and 
 		//			returns true if the number of letters in the string is greater than the int
+		System.out.println("returns true if the number of letters in the string is greater than the int");
+		System.out.println(returnStringSizeGreater("Fives", 4));
+		System.out.println(returnStringSizeGreater("Fives", 5));
 		
 		
 		// 16. Write and test a method that takes an array of string and a string and 
 		//			returns true if the string passed in exists in the array
+		System.out.println("returns true if the string passed in exists in the array");
+		String[] myStringArray = {"Cat", "Dog", "Hamster","Turtle"};
+		System.out.println(checkInArray(myStringArray, "Parrot"));
+		System.out.println(checkInArray(myStringArray, "Hamster"));
+		
+		
 		
 		
 		// 17. Write and test a method that takes an array of int and 
 		//			returns the smallest number in the array
+		System.out.println("returns the smallest number in the array");
+		System.out.println(smallestInteger(intArray));
+		int[] intArray2 = intArray;
+		intArray2[0] = 1000;
+		System.out.println(smallestInteger(intArray2));
+		
 	
 		
 		// 18. Write and test a method that takes an array of double and 
 		//			returns the average
+		System.out.println("returns the average of double array");
+		double[] doubleArray = {1.0, 2.0, 3.0, 4.0, 6.0};
+		System.out.println(averageDouble(doubleArray));
+		
 		
 
 		// 19. Write and test a method that takes an array of Strings and 
 		//			returns an array of int where each element
 		//			matches the length of the string at that position
-
-				
+		System.out.println("returns an array of int where each element matches the length of the string at that position");
+		int[] intArray19 = stringLengths(aGroup);
+		for(int iA : intArray19) {
+			System.out.println(iA);
+		}
+		for(String sA : aGroup) {
+			System.out.println(sA);
+		}
+		
+						
 		// 20. Write and test a method that takes an array of strings and 
 		//			returns true if the sum of letters for all strings with an even amount of letters
 		//			is greater than the sum of those with an odd amount of letters.
+		System.out.println("returns true if the sum of letters for all strings with an even amount of letters is greater than the sum of those with an odd amount of letters.");
+		System.out.println(moreEvenLetters(aGroup));
+		String[] bGroup = {"Dog", "Cat", "Hamster","Bike", "Kite"};
+		System.out.println(moreEvenLetters(bGroup));
 
 	
 		// 21. Write and test a method that takes a string and 
 		//			returns true if the string is a palindrome
-
+		System.out.println("Write and test a method that takes a string and returns true if the string is a palindrome");
+		String palString = "rar";
+		int s = 7;
+		System.out.println(s/2);
+		System.out.println(isPalindrome(palString));
+		
+		
+		
+		
 		
 		
 	}
+		
+		
+
 	
 
 	
 	// Method 13:
+	public static void printGreeting(String aName){
+		
+		System.out.println("Hello, " + aName + "!");
+		
+	}
 
 
 	// Method 14:
+	public static String returnGreeting(String aName){
+		String myGreeting = "Hello, " + aName + "!";
+		
+		return myGreeting;
+	}
 
 	
 	// Method 15:
+	public static boolean returnStringSizeGreater(String aString, int sizeComp) {
+		return aString.length() > sizeComp;
+	}
 
 	
 	// Method 16:
+	public static boolean checkInArray(String[] stringArray, String testString) {
+		boolean appears = false;
+		
+		for(String check : stringArray) {
+			if(check == testString)
+				appears = true;
+		}
+		
+		return appears;
 
-	
+	}
+			
+		
 	// Method 17:
+	public static int smallestInteger(int[] intArray){
+		int smallest = intArray[0];
+		
+		for(int i : intArray) {
+			if(i < smallest) {
+				smallest = i;
+			}
+		}
+		
+		return smallest;
+	}
 
 	
 	// Method 18:
+	public static double averageDouble(double[] doubleArray) {
+		double average = 0.0;
+		double sum = 0.0;
+		
+		for(double d : doubleArray) {
+			sum += d;
+		}
+		
+		average = (sum/doubleArray.length);
+		
+		
+		return average;
+	}
 
 	
 	// Method 19:
+	public static int[] stringLengths(String[] sArray) {
+		int[] intArray = new int[sArray.length];
+		int i = 0;
+		
+		for(String s : sArray) {
+			intArray[i] = s.length();
+			i++;
+		}
+		
+		return intArray;
+	}
 
 	
 	// Method 20:
+	// 20. Write and test a method that takes an array of strings and 
+			//			returns true if the sum of letters for all strings with an even amount of letters
+			//			is greater than the sum of those with an odd amount of letters.
+	public static boolean moreEvenLetters(String[] sArray) {
+		int sumEven = 0, sumOdd = 0;
+		
+		for(String s : sArray) {
+			if((s.length() % 2) == 0) {
+				sumEven += s.length();
+			}
+			else {
+				sumOdd += s.length();
+			}
+		}
+		
+		return sumEven > sumOdd;
+	}
 	
 	
 	// Method 21:
+	// 21. Write and test a method that takes a string and 
+			//			returns true if the string is a palindrome
+	public static boolean isPalindrome(String s) {
+		boolean palindrome = true, isEven = false;
+		
+		int strLength = s.length();
+		int halfStr = strLength/2;
+		
+		if(s.length()%2 == 0) {
+			isEven = true;
+		}
+		
+		for(int i = 0; i < halfStr; i++) {
+			if( s.charAt(i) != s.charAt(strLength -1 -i)) {
+				palindrome = false;
+			}
+		}
+		
+		return palindrome;
+	}
 
 }
