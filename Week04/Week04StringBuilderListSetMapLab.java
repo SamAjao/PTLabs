@@ -72,6 +72,9 @@ public class Week04StringBuilderListSetMapLab {
 		// 6. Write and test a method that takes a list of strings and a string 
 		//			and returns a new list with all strings from the original list
 		// 			containing the second string parameter (i.e. like a search method)
+		System.out.println("Output String List with String object appended.");
+		System.out.println(addString(myStringList, "Mike"));
+		System.out.println(myStringList);
 
 		
 		// 7. Write and test a method that takes a list of integers 
@@ -82,6 +85,24 @@ public class Week04StringBuilderListSetMapLab {
 		//		b. The second List contains values from the input list that are divisible by 3
 		//		c. The third containing values divisible by 5, and 
 		//		d. The fourth all numbers from the input List not divisible by 2, 3, or 5
+		List<Integer> myIntList = new ArrayList<>();
+		myIntList.add(1);
+		myIntList.add(2);
+		myIntList.add(3);
+		myIntList.add(4);
+		myIntList.add(5);
+		myIntList.add(6);
+		myIntList.add(7);
+		myIntList.add(8);
+		myIntList.add(9);
+		myIntList.add(10);
+		System.out.println("Print a list of sorted integer lists:");
+		System.out.println(compileIntLists(myIntList));
+		System.out.print("Original Int List: ");
+		System.out.print(myIntList);
+		
+	
+		
 
 		
 		// 8. Write and test a method that takes a list of strings 
@@ -153,11 +174,65 @@ public class Week04StringBuilderListSetMapLab {
 
 	
 	// Method 7:
+	// 7. Write and test a method that takes a list of integers 
+	//			and returns a List<List<Integer>> with the following conditions specified
+	//			for the return value:
+	//	a. The first List in the returned value contains any number from the input list 
+	//			that is divisible by 2
+	//	b. The second List contains values from the input list that are divisible by 3
+	//	c. The third containing values divisible by 5, and 
+	//	d. The fourth all numbers from the input List not divisible by 2, 3, or 5
+	
+	public static List<List<Integer>> compileIntLists(List<Integer> listOfInts){
+		List<Integer> cpyIntList = new ArrayList<Integer>(listOfInts);
+		List<List<Integer>> bigList = new ArrayList<>();
+		int lastIndex = cpyIntList.size() - 1;
+		
+		List<Integer> div2List = new ArrayList<>(); //	a. The first List in the returned value contains any number from the input list
+		List<Integer> div3List = new ArrayList<>(); //	b. The second List contains values from the input list that are divisible by 3
+		List<Integer> div5List = new ArrayList<>(); //	c. The third containing values divisible by 5, and 
+		List<Integer> nonDivList = new ArrayList<>(); //	d. The fourth all numbers from the input List not divisible by 2, 3, or 5
+		
+		for(int i = 0; i <= lastIndex; i++) {
+			if(cpyIntList.get(i)%2 == 0) {
+				div2List.add(cpyIntList.get(i));
+			}
+			else if(cpyIntList.get(i)%3 == 0) {
+				div3List.add(cpyIntList.get(i));
+			}
+			else if(cpyIntList.get(i)%5 == 0) {
+				div5List.add(cpyIntList.get(i));
+			}
+			else {
+				nonDivList.add(cpyIntList.get(i));
+			}
+		}
+		
+		bigList.add(div2List);
+		bigList.add(div3List);
+		bigList.add(div5List);
+		bigList.add(nonDivList);
+		
+		
+		return bigList;
+	}
 	
 
 	
 	// Method 6:
+	// 6. Write and test a method that takes a list of strings and a string 
+	//			and returns a new list with all strings from the original list
+	// 			containing the second string parameter (i.e. like a search method)
 	
+	public static List<String> addString(List<String> sList, String s){
+		
+		List<String> cpyList = new ArrayList<String>(sList);
+		StringBuilder inString = new StringBuilder(s);
+		
+		cpyList.add(inString.toString());
+		
+		return cpyList;
+	}
 
 	
 	// Method 5:
