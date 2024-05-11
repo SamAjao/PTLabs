@@ -8,7 +8,6 @@
 package Week04;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Week04StringBuilderListSetMapLab {
@@ -65,6 +64,9 @@ public class Week04StringBuilderListSetMapLab {
 		// 5. Write and test a method that takes a list of strings 
 		//			and returns a string with all the list elements concatenated to each other,
 		// 			separated by a comma
+		System.out.println("Concatonate String List");
+		System.out.println(concatString(myStringList));
+		System.out.println(myStringList);
 
 		
 		// 6. Write and test a method that takes a list of strings and a string 
@@ -159,6 +161,27 @@ public class Week04StringBuilderListSetMapLab {
 
 	
 	// Method 5:
+	// 5. Write and test a method that takes a list of strings 
+	//			and returns a string with all the list elements concatenated to each other,
+	//
+	public static String concatString(List<String> myList){
+		
+		int lastIndex = myList.size() - 1;
+		List<String> sList = new ArrayList<String>(myList);
+		StringBuilder concatString = new StringBuilder();
+		
+		if(lastIndex < 0) {
+			System.out.println("List is empty.");
+		}
+		else {
+			for(int i = 0; i<=lastIndex; i++) {
+				concatString.append(sList.get(i));
+			}
+		}
+		
+		
+		return concatString.toString();
+	}
 	
 	
 	
