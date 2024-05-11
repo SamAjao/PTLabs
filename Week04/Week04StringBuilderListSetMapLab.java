@@ -131,17 +131,41 @@ public class Week04StringBuilderListSetMapLab {
 		// 10. Write and test a method that takes a set of strings and a character 
 		//			and returns a set of strings consisting of all the strings in the
 		// 			input set that start with the character parameter.
+		System.out.println("Add Colorado to Set.");
+		strSet.add("Colorado");
+		System.out.println("String in Set starts with...");
+		System.out.println("A: " + getStartsWithChar(strSet, 'A'));
+		System.out.println("W: " + getStartsWithChar(strSet, 'W'));
+		System.out.println("C: " + getStartsWithChar(strSet, 'C'));
+		System.out.println(strSet);
+		
 
 
 		
 		// 11. Write and test a method that takes a set of strings 
 		//			and returns a list of the same strings
+		System.out.println("Write and test a method that takes a set of strings and returns a list of the same strings");
+		System.out.println(passSetReturnList(strSet));
 	
 		
 
 		// 12. Write and test a method that takes a set of integers 
 		//			and returns a new set of integers containing only even numbers 
 		//			from the original set
+		Set<Integer> myIntSet = new HashSet<>();
+		myIntSet.add(1);
+		myIntSet.add(2);
+		myIntSet.add(3);
+		myIntSet.add(4);
+		myIntSet.add(5);
+		myIntSet.add(6);
+		myIntSet.add(7);
+		myIntSet.add(8);
+		myIntSet.add(9);
+		myIntSet.add(10);
+		System.out.println("Return and even set from a set of integers.");
+		System.out.println(myIntSet);
+		System.out.println(getEvenSet(myIntSet));
 
 
 		
@@ -172,14 +196,59 @@ public class Week04StringBuilderListSetMapLab {
 
 	
 	// Method 12:
-	
+	// 12. Write and test a method that takes a set of integers 
+	//			and returns a new set of integers containing only even numbers 
+	//			from the original set
+	public static Set<Integer> getEvenSet(Set<Integer> iSet){
+		
+		Set<Integer> intSetCpy = new HashSet<Integer>(iSet);
+		Set<Integer> evenSet = new HashSet<>();
+		
+		for(int i : intSetCpy) {
+			if(i%2 == 0) {
+				evenSet.add(i);
+			}
+		}
+		
+		return evenSet;
+	}
 
 	
 	// Method 11:
+	// 11. Write and test a method that takes a set of strings 
+	//			and returns a list of the same strings
+	public static List<String> passSetReturnList(Set<String> mySet){
+		
+		Set<String> cpyStrSet = new HashSet<String>(mySet);
+		List<String> aList = new ArrayList<String>(cpyStrSet);
+		//aList.addAll(cpyStrSet);
+		
+		System.out.println("Size of List copied from Set is: " + aList.size());
+		
+		return aList;
+		
+	}
 	
 
 
 	// Method 10:
+	// 10. Write and test a method that takes a set of strings and a character 
+	//			and returns a set of strings consisting of all the strings in the
+	// 			input set that start with the character parameter.
+	public static Set<String> getStartsWithChar(Set<String> aStringSet, char c){
+		
+		Set<String> cpyStrSet = new HashSet<>(aStringSet);
+		Set<String> startsWithSet = new HashSet<>();
+		
+		for(String s : cpyStrSet) {
+			if(s.charAt(0) == c) {
+				startsWithSet.add(s);
+			}
+		}
+		
+		return startsWithSet;
+	}
+	
 	
 
 	
