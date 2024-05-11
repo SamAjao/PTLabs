@@ -8,7 +8,9 @@
 package Week04;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Week04StringBuilderListSetMapLab {
 
@@ -98,8 +100,8 @@ public class Week04StringBuilderListSetMapLab {
 		myIntList.add(10);
 		System.out.println("Print a list of sorted integer lists:");
 		System.out.println(compileIntLists(myIntList));
-		System.out.print("Original Int List: ");
-		System.out.print(myIntList);
+		System.out.println("Original Int List: ");
+		System.out.println(myIntList);
 		
 	
 		
@@ -107,10 +109,22 @@ public class Week04StringBuilderListSetMapLab {
 		
 		// 8. Write and test a method that takes a list of strings 
 		//			and returns a list of integers that contains the length of each string
+		System.out.print("list of integers that contains the length of each string: ");
+		System.out.print(getStringLengths(myStringList));
+		System.out.println(myStringList);
+		
 
 
 		
 		// 9. Create a set of strings and add 5 values
+		Set<String> strSet = new HashSet<>();
+		strSet.add("California");
+		strSet.add("Nevada");
+		strSet.add("Arizona");
+		strSet.add("Oregon");
+		strSet.add("Washington");
+		System.out.println("Create a set of strings and add 5 values:");
+		System.out.println(strSet);
 
 		
 		
@@ -170,6 +184,20 @@ public class Week04StringBuilderListSetMapLab {
 
 	
 	// Method 8:
+	// 8. Write and test a method that takes a list of strings 
+	//			and returns a list of integers that contains the length of each string
+	public static List<Integer> getStringLengths(List<String> aStringList){
+		
+		List<String> cpyStrList = new ArrayList<>(aStringList);
+		List<Integer> strLengths = new ArrayList<>();
+		
+		for(String s : cpyStrList) {
+			strLengths.add(s.length());
+		}
+		
+		
+		return strLengths;
+	}
 	
 
 	
@@ -188,7 +216,7 @@ public class Week04StringBuilderListSetMapLab {
 		List<List<Integer>> bigList = new ArrayList<>();
 		int lastIndex = cpyIntList.size() - 1;
 		
-		List<Integer> div2List = new ArrayList<>(); //	a. The first List in the returned value contains any number from the input list
+		List<Integer> div2List = new ArrayList<>(); //	a. The first List in the returned value contains any number from the input list that is divisible by 2
 		List<Integer> div3List = new ArrayList<>(); //	b. The second List contains values from the input list that are divisible by 3
 		List<Integer> div5List = new ArrayList<>(); //	c. The third containing values divisible by 5, and 
 		List<Integer> nonDivList = new ArrayList<>(); //	d. The fourth all numbers from the input List not divisible by 2, 3, or 5
@@ -197,13 +225,13 @@ public class Week04StringBuilderListSetMapLab {
 			if(cpyIntList.get(i)%2 == 0) {
 				div2List.add(cpyIntList.get(i));
 			}
-			else if(cpyIntList.get(i)%3 == 0) {
+			if(cpyIntList.get(i)%3 == 0) {
 				div3List.add(cpyIntList.get(i));
 			}
-			else if(cpyIntList.get(i)%5 == 0) {
+			if(cpyIntList.get(i)%5 == 0) {
 				div5List.add(cpyIntList.get(i));
 			}
-			else {
+			if(cpyIntList.get(i)%2 != 0 && cpyIntList.get(i)%3 != 0 && cpyIntList.get(i)%5 != 0) {
 				nonDivList.add(cpyIntList.get(i));
 			}
 		}
