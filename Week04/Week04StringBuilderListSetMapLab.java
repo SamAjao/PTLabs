@@ -8,8 +8,10 @@
 package Week04;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Week04StringBuilderListSetMapLab {
@@ -163,7 +165,7 @@ public class Week04StringBuilderListSetMapLab {
 		myIntSet.add(8);
 		myIntSet.add(9);
 		myIntSet.add(10);
-		System.out.println("Return and even set from a set of integers.");
+		System.out.println("Return a even set from a set of integers.");
 		System.out.println(myIntSet);
 		System.out.println(getEvenSet(myIntSet));
 
@@ -171,12 +173,24 @@ public class Week04StringBuilderListSetMapLab {
 		
 		// 13. Create a map of string and string and add 3 items to it where the key of each
 		// 			is a word and the value is the definition of the word
+		Map<String,String> wordDef = new HashMap<String, String>();
+		wordDef.put("Fortify", "To strengthen and secure (a position) with fortifications.");
+		wordDef.put("No", "A negative response; a denial or refusal:");
+		wordDef.put("Touchscreen", "A monitor screen that can detect and respond to something, such as a finger or stylus, pressing on it.");
+		wordDef.put("Backlist", "To place (a title) on a backlist.");
+		wordDef.put("Taeniasis", "Infestation with tapeworms.");
+		wordDef.put("Confocal", "Having the same focus or foci. Used of a lens.");
+		wordDef.put("Complaisance", "The inclination to comply willingly with the wishes of others; amiability.");
+		
 
 	
 		
 		// 14. Write and test a method that takes a Map<String, String> and a string 
 		// 			and returns the value for a key in the map that matches the
 		// 			string parameter (i.e. like a language dictionary lookup)
+		System.out.println("returns the value for a key in the map that matches the string parameter (i.e. like a language dictionary lookup)");
+		System.out.println(getDef(wordDef,"Backlist"));
+		System.out.println(getDef(wordDef,"Taeniasis"));
 
 		
 		// 15. Write and test a method that takes a List<String> 
@@ -192,6 +206,23 @@ public class Week04StringBuilderListSetMapLab {
 	
 	
 	// Method 14:
+	// 14. Write and test a method that takes a Map<String, String> and a string 
+	// 			and returns the value for a key in the map that matches the
+	// 			string parameter (i.e. like a language dictionary lookup)
+	public static String getDef(Map<String,String> myMap, String strKey) {
+		
+		StringBuilder wordDef = new StringBuilder();
+		Map<String, String> mapCpy = new HashMap<>(myMap);
+		
+		for(Map.Entry<String, String> mp : mapCpy.entrySet()) {
+			if(mp.getKey() == strKey) {
+				wordDef.append(mapCpy.get(strKey));
+			}
+			
+		}
+		
+		return wordDef.toString();
+	}
 	
 
 	
@@ -237,8 +268,8 @@ public class Week04StringBuilderListSetMapLab {
 	// 			input set that start with the character parameter.
 	public static Set<String> getStartsWithChar(Set<String> aStringSet, char c){
 		
-		Set<String> cpyStrSet = new HashSet<>(aStringSet);
-		Set<String> startsWithSet = new HashSet<>();
+		Set<String> cpyStrSet = new HashSet<String>(aStringSet);
+		Set<String> startsWithSet = new HashSet<String>();
 		
 		for(String s : cpyStrSet) {
 			if(s.charAt(0) == c) {
@@ -257,8 +288,8 @@ public class Week04StringBuilderListSetMapLab {
 	//			and returns a list of integers that contains the length of each string
 	public static List<Integer> getStringLengths(List<String> aStringList){
 		
-		List<String> cpyStrList = new ArrayList<>(aStringList);
-		List<Integer> strLengths = new ArrayList<>();
+		List<String> cpyStrList = new ArrayList<String>(aStringList);
+		List<Integer> strLengths = new ArrayList<Integer>();
 		
 		for(String s : cpyStrList) {
 			strLengths.add(s.length());
@@ -282,13 +313,13 @@ public class Week04StringBuilderListSetMapLab {
 	
 	public static List<List<Integer>> compileIntLists(List<Integer> listOfInts){
 		List<Integer> cpyIntList = new ArrayList<Integer>(listOfInts);
-		List<List<Integer>> bigList = new ArrayList<>();
+		List<List<Integer>> bigList = new ArrayList<List<Integer>>();
 		int lastIndex = cpyIntList.size() - 1;
 		
-		List<Integer> div2List = new ArrayList<>(); //	a. The first List in the returned value contains any number from the input list that is divisible by 2
-		List<Integer> div3List = new ArrayList<>(); //	b. The second List contains values from the input list that are divisible by 3
-		List<Integer> div5List = new ArrayList<>(); //	c. The third containing values divisible by 5, and 
-		List<Integer> nonDivList = new ArrayList<>(); //	d. The fourth all numbers from the input List not divisible by 2, 3, or 5
+		List<Integer> div2List = new ArrayList<Integer>(); //	a. The first List in the returned value contains any number from the input list that is divisible by 2
+		List<Integer> div3List = new ArrayList<Integer>(); //	b. The second List contains values from the input list that are divisible by 3
+		List<Integer> div5List = new ArrayList<Integer>(); //	c. The third containing values divisible by 5, and 
+		List<Integer> nonDivList = new ArrayList<Integer>(); //	d. The fourth all numbers from the input List not divisible by 2, 3, or 5
 		
 		for(int i = 0; i <= lastIndex; i++) {
 			if(cpyIntList.get(i)%2 == 0) {
