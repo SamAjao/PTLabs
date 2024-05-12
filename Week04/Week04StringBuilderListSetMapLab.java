@@ -191,17 +191,49 @@ public class Week04StringBuilderListSetMapLab {
 		System.out.println("returns the value for a key in the map that matches the string parameter (i.e. like a language dictionary lookup)");
 		System.out.println(getDef(wordDef,"Backlist"));
 		System.out.println(getDef(wordDef,"Taeniasis"));
+		System.out.println(getDef(wordDef,"Apple"));
+		System.out.println(wordDef);
 
 		
 		// 15. Write and test a method that takes a List<String> 
 		//			and returns a Map<Character, Integer> containing a count of 
 		//			all the strings that start with a given character
+		System.out.println("15. returns a Map<Character, Integer> containing a count of all the strings that start with a given character");
+		System.out.println(myStringList);
+		System.out.println(getStrLengths(myStringList));
 		
 
 	}
 	
+	//------------------------------------------METHODS BEGIN-------------------------------------------------------------------------------
 	
 	// Method 15:
+	// 15. Write and test a method that takes a List<String> 
+	//			and returns a Map<Character, Integer> containing a count of 
+	//			all the strings that start with a given character
+	public static Map<Character, Integer> getStrLengths(List<String> strList){
+		
+		Map<Character, Integer> charMap = new HashMap<>();
+		List<String> listCpy = new ArrayList<String>(strList);
+		char c;
+		
+		for(String s : listCpy) {
+			c = s.charAt(0);
+			
+			if(charMap.containsKey(c)) {
+				//increment count Value by 1
+				charMap.put(c, charMap.get(c)+1);
+			}
+			else {
+				//Insert new key-value in Map.
+				charMap.put(c, 1);
+			}
+	
+		}
+		
+		return charMap;
+		
+	}
 	
 	
 	
