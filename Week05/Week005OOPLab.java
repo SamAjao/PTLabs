@@ -50,9 +50,11 @@ public class Week005OOPLab {
 		//
 		System.out.println("\nQuestion 1: Card Class");
 		// Add your code here to instantiate a Card
+		Card twoOfHearts = new Card("twoOfHearts", "Hearts", "2");
 		
 		
 		// Call the describe method on the newly instantiated card.
+		twoOfHearts.describe();
 		
 		
 		
