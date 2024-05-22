@@ -90,10 +90,11 @@ public class Week005OOPLab {
 		//		Add a shuffle method within the Deck Class
 		System.out.println("\nQuestion 3: Deck shuffle() method");
 		// Test your method here
-		
+		deck.shuffleDeck();
 		
 		
 		// Call the describe method on the newly shuffled deck.
+		deck.describe();
 
 		
 		

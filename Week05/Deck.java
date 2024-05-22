@@ -21,6 +21,7 @@
 package Week05;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
@@ -84,6 +85,12 @@ public class Deck {
 		
 		return deck;
 		
+	}
+	
+	
+	public void shuffleDeck(){
+		
+		 Collections.shuffle(cards);
 	}
 
 	public String getDeckName() {
