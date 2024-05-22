@@ -26,27 +26,46 @@ import java.util.List;
 
 public class Deck {
 	
-	private List<Card> cards = new ArrayList<Card>();
 	private String deckName;
+	private List<Card> cards = new ArrayList<Card>();
 	private List<String> suits = new ArrayList<String>();
 	private List<String> values = new ArrayList<String>();
 	
 	public Deck(String name) {
 		
-		//Deck Name
+		//Set Deck Name
 		setDeckName(name);
 		
+		//Build Deck
 		cards = new ArrayList<Card>(buildDeck());
 		
 		
 	}
 	
+	public Card draw() {
+		
+		int topCardIndex = cards.size() - 1;
+		Card drawCard = new Card();
+		
+		//Assign the card at the "top" of the deck at last index to 'drawCard'
+		drawCard = cards.get(topCardIndex);
+		
+		//Remove the card at the "top" of the deck
+		cards.remove(topCardIndex);
+		
+		return drawCard;
+	}
 	
 	public void describe() {
 		System.out.println("Cards in the Deck:");
 		for(Card c : cards) {
 			c.describe();
 		}
+	}
+	
+	public int getDeckSize() {
+		
+		return cards.size();
 	}
 	
 	
@@ -69,6 +88,7 @@ public class Deck {
 		values.add("Seven");
 		values.add("Eight");
 		values.add("Nine");
+		values.add("Ten");
 		values.add("Jack");
 		values.add("Queen");
 		values.add("King");

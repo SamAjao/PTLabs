@@ -76,6 +76,7 @@ public class Week005OOPLab {
 		System.out.println("\nQuestion 2: Deck Class");
 	    // Add your code here to instantiate a Deck
 		Deck deck = new Deck("Deck 1");
+		System.out.println("Number of remaining cards in deck: " + deck.getDeckSize());
 	    
 	    
 	    // Call the describe method on the newly instantiated deck.
@@ -103,11 +104,17 @@ public class Week005OOPLab {
 		//		Add a draw method within the Deck Class
 		System.out.println("\nQuestion 4: Deck draw() method");
 		// Test your method here
+		System.out.println("Number of remaining cards in deck: " + deck.getDeckSize());
+		Card drawCard = new Card();
+		drawCard = deck.draw();
 		
+		System.out.print("Drawn Card: ");
+		drawCard.describe();
 		
+		System.out.println("Number of remaining cards in deck: " + deck.getDeckSize());
+		deck.describe();
 		
-		
-		
+				
 		
 		
 		
