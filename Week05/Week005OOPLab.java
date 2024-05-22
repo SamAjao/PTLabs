@@ -74,10 +74,12 @@ public class Week005OOPLab {
 		//					print out all of the cards in the deck.
 		//
 		System.out.println("\nQuestion 2: Deck Class");
-	    // Add your code here to instantiate a Deck	
+	    // Add your code here to instantiate a Deck
+		Deck deck = new Deck("Deck 1");
 	    
 	    
 	    // Call the describe method on the newly instantiated deck.
+		deck.describe();
 	    
 	    
 	    

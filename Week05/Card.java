@@ -1,3 +1,10 @@
+ /* Author : Samuel Ajao
+ * Subject: Java Week 05 Lab - Object Oriented Programming
+ * Program : Promineo Tech
+ * Date   : May 21, 2024
+ * 
+ */
+// Student: Samuel Ajao
 // A standard deck of playing cards has 52 cards as specified below 
 //		i. There are 4 suits:  Clubs, Diamonds, Hearts, & Spades
 //				
@@ -39,9 +46,7 @@ public class Card {
 	}
 	
 	public void describe() {
-		System.out.println("Card name: " + name);
-		System.out.println("Card suite: " + suit);
-		System.out.println("Card value: " + value);
+		System.out.print("Card name: " + name + "\tCard suite: " + suit +"\tCard value: " + value + "\n");
 	}
 	
 	public String getName() {
@@ -66,43 +71,43 @@ public class Card {
 	
 	public void setValue(String value) {
 		switch(value) {
-			case("2"):
+			case("Two"):
 				this.value = 2;
 				break;
-			case("3"):
+			case("Three"):
 				this.value = 3;
 				break;
-			case("4"):
+			case("Four"):
 				this.value = 4;
 				break;
-			case("5"):
+			case("Five"):
 				this.value = 5;
 				break;
-			case("6"):
+			case("Six"):
 				this.value = 6;
 				break;
-			case("7"):
+			case("Seven"):
 				this.value = 7;
 				break;
-			case("8"):
+			case("Eight"):
 				this.value = 8;
 				break;
-			case("9"):
+			case("Nine"):
 				this.value = 9;
 				break;
-			case("10"):
+			case("Ten"):
 				this.value = 10;
 				break;
-			case("J"):
+			case("Jack"):
 				this.value = 11;
 				break;
-			case("Q"):
+			case("Queen"):
 				this.value = 12;
 				break;
-			case("K"):
+			case("King"):
 				this.value = 13;
 				break;
-			case("A"):
+			case("Ace"):
 				this.value = 14;
 				break;
 			default:
