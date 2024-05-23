@@ -35,14 +35,17 @@ public class Card {
 	private String suit;
 	private int value;
 	
+	
 	public Card() {
 		
 	}
 	
 	public Card(String name, String suit, String value) {
+		
 		setName(name);
 		setSuit(suit);
 		setValue(value);
+		
 	}
 	
 	public void describe() {

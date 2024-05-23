@@ -7,10 +7,10 @@
 //
 package Week05;
 
-
-
-
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Week005OOPLab {
 
@@ -50,7 +50,7 @@ public class Week005OOPLab {
 		//
 		System.out.println("\nQuestion 1: Card Class");
 		// Add your code here to instantiate a Card
-		Card twoOfHearts = new Card("twoOfHearts", "Hearts", "2");
+		Card twoOfHearts = new Card("twoOfHearts", "Hearts", "Two");
 		
 		
 		// Call the describe method on the newly instantiated card.
@@ -108,7 +108,7 @@ public class Week005OOPLab {
 		Card drawCard = new Card();
 		drawCard = deck.draw();
 		
-		System.out.print("Drawn Card: ");
+		System.out.print("Drawn Card::: ");
 		drawCard.describe();
 		
 		System.out.println("Number of remaining cards in deck: " + deck.getDeckSize());
@@ -128,17 +128,84 @@ public class Week005OOPLab {
 		// 			and deal the cards out to the "players" in the Map.
 		System.out.println("\nQuestion 5: Create Game");
 		// Call your method here
-
 		
+		Map<String, List<Card>> game1 = new HashMap<String,List<Card>>();
 		
+		int numPlayers = 5;
+		game1 = createGameBoard(numPlayers);
 		
+		/*System.out.println("-----------------------------------");
+		for (int i =1 ; i <=numPlayers; i++) {
+			String playerName = "Player: " + i;
+			System.out.println(playerName + "\n----------------------");
+			List<Card> playerList = game1.get(playerName);
+			for(Card c : playerList) {
+				c.describe();
+			}
+			System.out.println("-----------------------------------");
+		}
+		*/
 		
-		
+		System.out.println(game1);
 		
 		
 	} 
 	
 	// Method 5:
+	public static Map<String, List<Card>> createGameBoard(int numPlayers) {
+		
+		//Create the game board
+		Map<String, List<Card>> gameMap = new HashMap<String,List<Card>>();
+		
+		//Build a deck
+		Deck gameDeck = new Deck("Game Deck");
+		
+		//Shuffle the deck
+		gameDeck.shuffleDeck();
+		
+		System.out.println("The number of cards in the deck is " + gameDeck.getDeckSize());
+		
+		//Divide the cards evenly among players
+		int cardsPerPlayer = gameDeck.getDeckSize()/numPlayers;
+		System.out.println("Each player receives " + cardsPerPlayer + " cards");
+		
+		
+		
+		for(int i = 1; i <= numPlayers; i++) {
+			//Instantiate values going into Map for each individual player
+			StringBuilder playerName = new StringBuilder();
+			playerName.append("Player " + (i));
+			List<Card> playerHand = new ArrayList<Card>();
+			
+			
+			for(int j = 1; j <= cardsPerPlayer; j++) {
+				playerHand.add(gameDeck.draw());
+			}
+			
+			for(Card c : playerHand) {
+				System.out.println(playerName);
+				c.describe();
+			}
+			
+			gameMap.put(playerName.toString(), playerHand);
+			
+			for (Map.Entry<String, List<Card>> entry : gameMap.entrySet()) {
+			    System.out.println(entry.getKey() + ":" + entry.getValue().contains(playerName));
+			}
+			
+			
+		}
+		
+		
+		System.out.println("The number of cards in the deck is " + gameDeck.getDeckSize());
+		
+		for (Map.Entry<String, List<Card>> entry : gameMap.entrySet()) {
+		    System.out.println(entry.getKey() + ":" + entry.getValue().toString());
+		}
+		
+		return gameMap;
+		
+	}
 	
 	
 	

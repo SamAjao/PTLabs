@@ -37,21 +37,20 @@ public class Deck {
 		setDeckName(name);
 		
 		//Build Deck
-		cards = new ArrayList<Card>(buildDeck());
-		
-		
+		buildDeck();
+			
 	}
 	
 	public Card draw() {
 		
-		int topCardIndex = cards.size() - 1;
+		int topCardIndex = this.cards.size() - 1;
 		Card drawCard = new Card();
 		
 		//Assign the card at the "top" of the deck at last index to 'drawCard'
-		drawCard = cards.get(topCardIndex);
+		drawCard = this.cards.get(topCardIndex);
 		
 		//Remove the card at the "top" of the deck
-		cards.remove(topCardIndex);
+		this.cards.remove(topCardIndex);
 		
 		return drawCard;
 	}
@@ -69,48 +68,46 @@ public class Deck {
 	}
 	
 	
-	public List<Card> buildDeck(){
-		
-		List<Card> deck = new ArrayList<Card>();
+	private void buildDeck(){
+
 		
 		//Suites
-		suits.add("Clubs");
-		suits.add("Diamonds");
-		suits.add("Hearts");
-		suits.add("Spades");
+		this.suits.add("Clubs");
+		this.suits.add("Diamonds");
+		this.suits.add("Hearts");
+		this.suits.add("Spades");
 		
-		//Values
-		values.add("Two");
-		values.add("Three");
-		values.add("Four");
-		values.add("Five");
-		values.add("Six");
-		values.add("Seven");
-		values.add("Eight");
-		values.add("Nine");
-		values.add("Ten");
-		values.add("Jack");
-		values.add("Queen");
-		values.add("King");
-		values.add("Ace");
+		//this.values
+		this.values.add("Two");
+		this.values.add("Three");
+		this.values.add("Four");
+		this.values.add("Five");
+		this.values.add("Six");
+		this.values.add("Seven");
+		this.values.add("Eight");
+		this.values.add("Nine");
+		this.values.add("Ten");
+		this.values.add("Jack");
+		this.values.add("Queen");
+		this.values.add("King");
+		this.values.add("Ace");
 		
 		//Nested for-loops to iterate through every value of every suit, create a card, add card to deck and then return deck.
-		for(String s : suits) {
-			for(String v : values) {
+		for(String s : this.suits) {
+			for(String v : this.values) {
 				String n = v + " of " + s;  
 				Card c = new Card(n, s, v);
-				deck.add(c);
+				this.cards.add(c);
 			}
 		}
-		
-		return deck;
+
 		
 	}
 	
 	
 	public void shuffleDeck(){
 		
-		 Collections.shuffle(cards);
+		 Collections.shuffle(this.cards);
 	}
 
 	public String getDeckName() {
