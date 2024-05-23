@@ -134,22 +134,15 @@ public class Week005OOPLab {
 		int numPlayers = 5;
 		game1 = createGameBoard(numPlayers);
 		
-		/*System.out.println("-----------------------------------");
-		for (int i =1 ; i <=numPlayers; i++) {
-			String playerName = "Player: " + i;
-			System.out.println(playerName + "\n----------------------");
-			List<Card> playerList = game1.get(playerName);
-			for(Card c : playerList) {
-				c.describe();
-			}
-			System.out.println("-----------------------------------");
+		for (Map.Entry<String, List<Card>> entry : game1.entrySet()) {
+			System.out.println("\n" + entry.getKey());
+		    for(Card c : entry.getValue()) {
+		    	c.describe();
+		    }
 		}
-		*/
-		
-		System.out.println(game1);
 		
 		
-	} 
+	} //End of Main 
 	
 	// Method 5:
 	public static Map<String, List<Card>> createGameBoard(int numPlayers) {
@@ -170,7 +163,6 @@ public class Week005OOPLab {
 		System.out.println("Each player receives " + cardsPerPlayer + " cards");
 		
 		
-		
 		for(int i = 1; i <= numPlayers; i++) {
 			//Instantiate values going into Map for each individual player
 			StringBuilder playerName = new StringBuilder();
@@ -182,16 +174,7 @@ public class Week005OOPLab {
 				playerHand.add(gameDeck.draw());
 			}
 			
-			for(Card c : playerHand) {
-				System.out.println(playerName);
-				c.describe();
-			}
-			
 			gameMap.put(playerName.toString(), playerHand);
-			
-			for (Map.Entry<String, List<Card>> entry : gameMap.entrySet()) {
-			    System.out.println(entry.getKey() + ":" + entry.getValue().contains(playerName));
-			}
 			
 			
 		}
@@ -199,16 +182,12 @@ public class Week005OOPLab {
 		
 		System.out.println("The number of cards in the deck is " + gameDeck.getDeckSize());
 		
-		for (Map.Entry<String, List<Card>> entry : gameMap.entrySet()) {
-		    System.out.println(entry.getKey() + ":" + entry.getValue().toString());
-		}
-		
 		return gameMap;
 		
-	}
+	} //End of createGameBoard Method
 	
 	
 	
 	
 
-}
+} //End of Class

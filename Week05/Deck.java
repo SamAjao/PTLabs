@@ -77,7 +77,7 @@ public class Deck {
 		this.suits.add("Hearts");
 		this.suits.add("Spades");
 		
-		//this.values
+		//Values
 		this.values.add("Two");
 		this.values.add("Three");
 		this.values.add("Four");

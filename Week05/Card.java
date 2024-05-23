@@ -4,7 +4,7 @@
  * Date   : May 21, 2024
  * 
  */
-// Student: Samuel Ajao
+// 
 // A standard deck of playing cards has 52 cards as specified below 
 //		i. There are 4 suits:  Clubs, Diamonds, Hearts, & Spades
 //				
