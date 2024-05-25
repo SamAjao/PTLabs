@@ -112,9 +112,9 @@ public class GameBoard {
 		Set<Integer> path8 = new HashSet<>(Arrays.asList(3,5,7));
 		
 		for(Map.Entry<String,List<Integer>> entry : filledSpaces.entrySet()) {
-			if(entry.getValue().contains(path1) || entry.getValue().contains(path2) || entry.getValue().contains(path3)
-					|| entry.getValue().contains(path4) || entry.getValue().contains(path5) || entry.getValue().contains(path6)
-					|| entry.getValue().contains(path7) || entry.getValue().contains(path8)) {
+			if(entry.getValue().containsAll(path1) || entry.getValue().containsAll(path2) || entry.getValue().containsAll(path3)
+					|| entry.getValue().containsAll(path4) || entry.getValue().containsAll(path5) || entry.getValue().containsAll(path6)
+					|| entry.getValue().containsAll(path7) || entry.getValue().containsAll(path8)) {
 				crossFound = true;
 			}
 			else {
