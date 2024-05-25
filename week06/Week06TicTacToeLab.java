@@ -8,6 +8,8 @@
 //
 package week06;
 
+import java.util.Scanner;
+
 public class Week06TicTacToeLab {
 
 	// This Lab requires you to program a simple game of Tic Tac Toe
@@ -100,10 +102,15 @@ public class Week06TicTacToeLab {
 	//	
 	
 	// START YOUR IMPLEMENTATION BELOW THIS LINE
+	
+	Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
 		GameBoard game1 = new GameBoard();
+		
+		//Prompt Player 1
+		System.out.println("Player 1's turn");
 
 			
 		
