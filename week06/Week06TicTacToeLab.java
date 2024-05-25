@@ -104,19 +104,35 @@ public class Week06TicTacToeLab {
 	// START YOUR IMPLEMENTATION BELOW THIS LINE
 	
 	Scanner scanner = new Scanner(System.in);
+	static int gameTurn;
+	static StringBuilder player = new StringBuilder();
 
 	public static void main(String[] args) {
 		
 		GameBoard game1 = new GameBoard();
 		
-		//Prompt Player 1
-		//System.out.println("Player 1's turn");
-		
 		game1.displayBoard();
 		System.out.println(game1.getTurn());
+		
+		int decision = 0;
+		
+		while(decision != 0) {
+			
+			gameTurn = game1.getTurn();
+			
+			player.setLength(0);
+			if(gameTurn%2 != 0) {			
+				player.append(game1.getPlayer2());
+			}
+			else {
+				player.append(game1.getPlayer1());
+			}
+			
+			
+		}
 
 			
 		
-	}
+	} // End Main
 
-}
+} // End Class
