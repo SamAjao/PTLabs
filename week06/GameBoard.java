@@ -8,6 +8,7 @@
 package week06;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -20,6 +21,7 @@ public class GameBoard {
 	private String player2;
 	private int gameTurn;
 	private Set<Integer> spaces = new HashSet<>();
+	private Set<Integer> openSpaces = new HashSet<>();
 	private Map<String,List<Integer>> claimedSpaces = new HashMap<>();
 	
 	public GameBoard(){
@@ -67,6 +69,14 @@ public class GameBoard {
 		this.gameTurn += 1;
 	}
 	
+	public boolean isSpaceAvailable(int sel) {
+		//returns true if space has not yet been removed (selected)
+		return openSpaces.contains(sel);
+	}
+	
+	public void removeSpaceFromAvailable(int sel) {
+		this.openSpaces.remove(sel);
+	}
 	
 	public int whatTurn() {
 		return gameTurn;
@@ -76,6 +86,7 @@ public class GameBoard {
 		
 		for(int i =1;i<10;i++) {
 			this.spaces.add(i);
+			this.openSpaces.add(i);
 		}
 		
 		this.gameTurn = 1;
@@ -86,10 +97,31 @@ public class GameBoard {
 		
 		boolean crossFound = false;
 		
-		/*if 1-2-3, 4-5-6, 7-8-9
+		/*  Cross combinations required to win
+		 * 	 1-2-3, 4-5-6, 7-8-9
 		 *   1-4-7, 2-5-8, 3-6-9
 		 *   1-5-9, 3-5-7
 		 */
+		Set<Integer> path1 = new HashSet<>(Arrays.asList(1,2,3));
+		Set<Integer> path2 = new HashSet<>(Arrays.asList(4,5,6));
+		Set<Integer> path3 = new HashSet<>(Arrays.asList(7,8,9));
+		Set<Integer> path4 = new HashSet<>(Arrays.asList(1,4,7));
+		Set<Integer> path5 = new HashSet<>(Arrays.asList(2,5,8));
+		Set<Integer> path6 = new HashSet<>(Arrays.asList(3,6,9));
+		Set<Integer> path7 = new HashSet<>(Arrays.asList(1,5,9));
+		Set<Integer> path8 = new HashSet<>(Arrays.asList(3,5,7));
+		
+		for(Map.Entry<String,List<Integer>> entry : filledSpaces.entrySet()) {
+			if(entry.getValue().contains(path1) || entry.getValue().contains(path2) || entry.getValue().contains(path3)
+					|| entry.getValue().contains(path4) || entry.getValue().contains(path5) || entry.getValue().contains(path6)
+					|| entry.getValue().contains(path7) || entry.getValue().contains(path8)) {
+				crossFound = true;
+			}
+			else {
+				crossFound = false;
+			}
+			
+		}
 		
 		
 		return crossFound;
