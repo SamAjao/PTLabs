@@ -20,7 +20,7 @@ public class GameBoard {
 	private String player1;
 	private String player2;
 	private int gameTurn;
-	private Set<Integer> spaces = new HashSet<>();
+	private List<String> spaces = new ArrayList<>();
 	private Set<Integer> openSpaces = new HashSet<>();
 	private Map<String,List<Integer>> claimedSpaces = new HashMap<>();
 	
@@ -78,14 +78,58 @@ public class GameBoard {
 		this.openSpaces.remove(sel);
 	}
 	
-	public int whatTurn() {
+	public int getTurn() {
 		return gameTurn;
+	}
+	
+	
+	public void displayBoard() {
+		/*
+		 * REPEATING CODE TO BE CLEANED UP
+		 */
+		//Print 1st row
+		printAsterisks(19);
+		System.out.println();
+		printRow(0,2);
+		System.out.println();
+		
+		//Print 2nd row
+		printAsterisks(19);
+		System.out.println();
+		printRow(3,5);
+		System.out.println();
+		
+		//Print 3rd row
+		printAsterisks(19);
+		System.out.println();
+		printRow(6,8);
+		System.out.println();
+		
+		printAsterisks(19);
+		System.out.println();
+		
+	}
+	
+	
+	private void printAsterisks(int printAste) {
+		
+		for(int i = 0; i < printAste; i++) {
+			System.out.print("*");
+		}
+
+	}
+	
+	private void printRow(int start, int finish) {
+		for(int i = start; i <= finish; i++) {
+		System.out.print("|  " + spaces.get(i)+"  ");
+		}
+		System.out.print("|");
 	}
 	
 	private void setBoard() {
 		
 		for(int i =1;i<10;i++) {
-			this.spaces.add(i);
+			this.spaces.add(String.valueOf(i));
 			this.openSpaces.add(i);
 		}
 		

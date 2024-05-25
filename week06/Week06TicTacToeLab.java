@@ -110,7 +110,10 @@ public class Week06TicTacToeLab {
 		GameBoard game1 = new GameBoard();
 		
 		//Prompt Player 1
-		System.out.println("Player 1's turn");
+		//System.out.println("Player 1's turn");
+		
+		game1.displayBoard();
+		System.out.println(game1.getTurn());
 
 			
 		
