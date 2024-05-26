@@ -130,15 +130,17 @@ public class GameBoard {
 	
 	private void setBoard() {
 		
-		List<Integer> initList = new ArrayList<Integer>();
+		List<Integer> initList1 = new ArrayList<Integer>();
+		List<Integer> initList2 = new ArrayList<Integer>();
 		
 		for(int i =1;i<10;i++) {
 			this.spaces.add(String.valueOf(i));
 			this.openSpaces.add(i);
 		}
 		
-		this.claimedSpaces.put(player1, initList);
-		this.claimedSpaces.put(player2, initList);
+		//initialize player lists
+		this.claimedSpaces.put(player1, initList1);
+		this.claimedSpaces.put(player2, initList2);
 		
 		this.gameTurn = 1;
 	}

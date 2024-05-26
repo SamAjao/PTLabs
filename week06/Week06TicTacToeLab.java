@@ -114,14 +114,19 @@ public class Week06TicTacToeLab {
 		
 		game1.displayBoard();
 		//System.out.println(game1.getTurn());
+		System.out.println(game1.checkGameOver());
 		game1.playerSelection("Player 1", 5);
 		game1.displayBoard();
+		System.out.println(game1.checkGameOver());
 		game1.playerSelection("Player 2", 9);
 		game1.displayBoard();
+		System.out.println(game1.checkGameOver());
 		game1.playerSelection("Player 1", 2);
 		game1.displayBoard();
+		System.out.println(game1.checkGameOver());
 		game1.playerSelection("Player 2", 6);
 		game1.displayBoard();
+		System.out.println(game1.checkGameOver());
 		game1.playerSelection("Player 1", 8);
 		game1.displayBoard();
 		
@@ -134,7 +139,7 @@ public class Week06TicTacToeLab {
 			gameTurn = game1.getTurn();
 			
 			player.setLength(0);
-			if(gameTurn%2 != 0) {			
+			if(gameTurn %2 != 0) {			
 				player.append(game1.getPlayer1());
 			}
 			else {
