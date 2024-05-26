@@ -103,7 +103,7 @@ public class Week06TicTacToeLab {
 	
 	// START YOUR IMPLEMENTATION BELOW THIS LINE
 	
-	Scanner scanner = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 	static int gameTurn;
 	static StringBuilder player = new StringBuilder();
 	static boolean gameOver = false;
@@ -112,29 +112,12 @@ public class Week06TicTacToeLab {
 		
 		GameBoard game1 = new GameBoard();
 		
-		game1.displayBoard();
-		//System.out.println(game1.getTurn());
-		System.out.println(game1.checkGameOver());
-		game1.playerSelection("Player 1", 5);
-		game1.displayBoard();
-		System.out.println(game1.checkGameOver());
-		game1.playerSelection("Player 2", 9);
-		game1.displayBoard();
-		System.out.println(game1.checkGameOver());
-		game1.playerSelection("Player 1", 2);
-		game1.displayBoard();
-		System.out.println(game1.checkGameOver());
-		game1.playerSelection("Player 2", 6);
-		game1.displayBoard();
-		System.out.println(game1.checkGameOver());
-		game1.playerSelection("Player 1", 8);
-		game1.displayBoard();
-		
-		System.out.println(game1.checkGameOver());
 		
 		int decision = 0;
 		
-		while(decision != 0) {
+		while(gameTurn < 9 && !gameOver) {
+			
+			game1.displayBoard();
 			
 			gameTurn = game1.getTurn();
 			
@@ -146,15 +129,29 @@ public class Week06TicTacToeLab {
 				player.append(game1.getPlayer2());
 			}
 			
-			System.out.println(player+ " go!");
+			System.out.print(player+ ", choose a square! ");
+			decision = scanner.nextInt();
+			game1.playerSelection(player.toString(), decision);
+			System.out.println();
 			
 			gameOver = game1.checkGameOver();
+			gameTurn = game1.getTurn();
 			
 			
+		}
+		
+		game1.displayBoard();
+		
+		if(gameTurn > 9) {
+			System.out.println("TIE GAME!!!");
+		}
+		else {
+			System.out.println(player.toString() + " WINS!");
 		}
 
 			
 		
 	} // End Main
+	
 
 } // End Class
