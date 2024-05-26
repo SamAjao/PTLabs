@@ -106,13 +106,26 @@ public class Week06TicTacToeLab {
 	Scanner scanner = new Scanner(System.in);
 	static int gameTurn;
 	static StringBuilder player = new StringBuilder();
+	static boolean gameOver = false;
 
 	public static void main(String[] args) {
 		
 		GameBoard game1 = new GameBoard();
 		
 		game1.displayBoard();
-		System.out.println(game1.getTurn());
+		//System.out.println(game1.getTurn());
+		game1.playerSelection("Player 1", 5);
+		game1.displayBoard();
+		game1.playerSelection("Player 2", 9);
+		game1.displayBoard();
+		game1.playerSelection("Player 1", 2);
+		game1.displayBoard();
+		game1.playerSelection("Player 2", 6);
+		game1.displayBoard();
+		game1.playerSelection("Player 1", 8);
+		game1.displayBoard();
+		
+		System.out.println(game1.checkGameOver());
 		
 		int decision = 0;
 		
@@ -122,11 +135,15 @@ public class Week06TicTacToeLab {
 			
 			player.setLength(0);
 			if(gameTurn%2 != 0) {			
-				player.append(game1.getPlayer2());
-			}
-			else {
 				player.append(game1.getPlayer1());
 			}
+			else {
+				player.append(game1.getPlayer2());
+			}
+			
+			System.out.println(player+ " go!");
+			
+			gameOver = game1.checkGameOver();
 			
 			
 		}

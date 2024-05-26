@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class GameBoard {
 	
@@ -25,9 +26,9 @@ public class GameBoard {
 	private Map<String,List<Integer>> claimedSpaces = new HashMap<>();
 	
 	public GameBoard(){
-		setBoard();
 		this.player1 = "Player 1";
 		this.player2 = "Player 2";
+		setBoard();
 		
 	}
 	
@@ -56,14 +57,20 @@ public class GameBoard {
 	
 	public void playerSelection(String player, int selection) {
 		
-		List<Integer> space = new ArrayList<Integer>();
-		space.add(selection);
+		String playerToken;
+		if(gameTurn %2 != 0) {
+			playerToken = "X";
+		}
+		else {
+			playerToken = "O";
+		}
 		
 		//combine player's selection lists
-		space.addAll(claimedSpaces.get(player));
+		this.claimedSpaces.get(player).add(selection);
+		
 		
 		//update player selections
-		this.claimedSpaces.put(player, space);
+		this.spaces.set(selection-1, playerToken);
 		
 		//next game turn
 		this.gameTurn += 1;
@@ -84,32 +91,27 @@ public class GameBoard {
 	
 	
 	public void displayBoard() {
-		/*
-		 * REPEATING CODE TO BE CLEANED UP
-		 */
-		//Print 1st row
-		printAsterisks(19);
-		System.out.println();
-		printRow(0,2);
-		System.out.println();
-		
-		//Print 2nd row
-		printAsterisks(19);
-		System.out.println();
-		printRow(3,5);
-		System.out.println();
-		
-		//Print 3rd row
-		printAsterisks(19);
-		System.out.println();
-		printRow(6,8);
-		System.out.println();
+
+		//print data on each row of board
+		for(int i = 0; i<9; i+=3) {
+			printAsterisks(19);
+			System.out.println();
+			printRow(i,i+2);
+			System.out.println();
+			
+		}
 		
 		printAsterisks(19);
 		System.out.println();
 		
 	}
 	
+	
+	public boolean checkGameOver()
+	{
+		//returns true if three in a row found
+		return checkThreeInARow(claimedSpaces);
+	}
 	
 	private void printAsterisks(int printAste) {
 		
@@ -128,10 +130,15 @@ public class GameBoard {
 	
 	private void setBoard() {
 		
+		List<Integer> initList = new ArrayList<Integer>();
+		
 		for(int i =1;i<10;i++) {
 			this.spaces.add(String.valueOf(i));
 			this.openSpaces.add(i);
 		}
+		
+		this.claimedSpaces.put(player1, initList);
+		this.claimedSpaces.put(player2, initList);
 		
 		this.gameTurn = 1;
 	}
