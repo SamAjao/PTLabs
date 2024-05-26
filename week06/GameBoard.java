@@ -14,7 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class GameBoard {
 	
@@ -107,10 +106,38 @@ public class GameBoard {
 	}
 	
 	
-	public boolean checkGameOver()
-	{
+	public boolean checkGameOver(String p){
 		//returns true if three in a row found
-		return checkThreeInARow(claimedSpaces);
+		//return checkThreeInARow(claimedSpaces);
+		/*  Cross combinations required to win
+		 * 	 1-2-3, 4-5-6, 7-8-9
+		 *   1-4-7, 2-5-8, 3-6-9
+		 *   1-5-9, 3-5-7
+		 */
+		
+		boolean crossFound;
+		
+		Set<Integer> path1 = new HashSet<>(Arrays.asList(1,2,3));
+		Set<Integer> path2 = new HashSet<>(Arrays.asList(4,5,6));
+		Set<Integer> path3 = new HashSet<>(Arrays.asList(7,8,9));
+		Set<Integer> path4 = new HashSet<>(Arrays.asList(1,4,7));
+		Set<Integer> path5 = new HashSet<>(Arrays.asList(2,5,8));
+		Set<Integer> path6 = new HashSet<>(Arrays.asList(3,6,9));
+		Set<Integer> path7 = new HashSet<>(Arrays.asList(1,5,9));
+		Set<Integer> path8 = new HashSet<>(Arrays.asList(3,5,7));
+		
+		List<Integer> list = new ArrayList<Integer>(claimedSpaces.get(p));
+		if(list.containsAll(path1) || list.containsAll(path2) || list.containsAll(path3)
+				|| list.containsAll(path4) || list.containsAll(path5) || list.containsAll(path6)
+				|| list.containsAll(path7) || list.containsAll(path8)) {
+			crossFound = true;
+		}
+		else {
+			crossFound = false;
+		}
+		
+		return crossFound;
+		
 	}
 	
 	private void printAsterisks(int printAste) {

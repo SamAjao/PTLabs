@@ -115,7 +115,7 @@ public class Week06TicTacToeLab {
 		
 		int decision = 0;
 		
-		while(gameTurn < 9 && !gameOver) {
+		while(gameTurn < 10 && !gameOver) {
 			
 			game1.displayBoard();
 			
@@ -134,7 +134,7 @@ public class Week06TicTacToeLab {
 			game1.playerSelection(player.toString(), decision);
 			System.out.println();
 			
-			gameOver = game1.checkGameOver();
+			gameOver = game1.checkGameOver(player.toString());
 			gameTurn = game1.getTurn();
 			
 			
